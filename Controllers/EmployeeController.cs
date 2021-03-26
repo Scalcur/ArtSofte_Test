@@ -38,15 +38,18 @@ namespace ArtSofte_Test.Controllers
         [HttpGet("{id}")] 
         public IActionResult GetOne(string id) 
         {
-            _logger.LogInformation("Add user");
-            return new JsonResult(new { Data = "New User"});
+            _logger.LogInformation("About user");
+            return new JsonResult(new { Data = "User id"});
         }
 
-        [HttpPost("add")]
-        public IActionResult Add()
+        [HttpPost("add-{id}")]
+        public IActionResult Add(string id)
         {
             _logger.LogInformation("Add user");
-            return new JsonResult(new { Data = "New User"});
+
+            
+
+            return new JsonResult(new { Data = $"New User id - {id}"});
         }
 
         [HttpPut("edit")]
@@ -59,7 +62,7 @@ namespace ArtSofte_Test.Controllers
         [HttpDelete("delete")]
         public IActionResult Delete()
         {
-            _logger.LogInformation("Add user");
+            _logger.LogInformation("Delete user");
             return new JsonResult(new { Data = "New User"});
         }
     }
