@@ -39,20 +39,6 @@ namespace ArtSofte_Test.Controllers
         [HttpGet("{id}")] 
         public async Task GetOne(string id) 
         {
-<<<<<<< HEAD
-            _logger.LogInformation("About user");
-            return new JsonResult(new { Data = "User id"});
-        }
-
-        [HttpPost("add-{id}")]
-        public IActionResult Add(string id)
-        {
-            _logger.LogInformation("Add user");
-
-            
-
-            return new JsonResult(new { Data = $"New User id - {id}"});
-=======
             try
             {
             var employee = EmployeeController.Employees.FirstOrDefault(elem => elem.EmployeeId.ToString() == id);
@@ -96,7 +82,6 @@ namespace ArtSofte_Test.Controllers
                 await ErrorResult(ex.Message);
             }
             
->>>>>>> 7ada2322d999ce6c3528fc97f07a32f6579ae088
         }
 
         [HttpPut("edit")]
@@ -135,10 +120,6 @@ namespace ArtSofte_Test.Controllers
         [HttpDelete("delete/{id}")]
         async public Task Delete(string id)
         {
-<<<<<<< HEAD
-            _logger.LogInformation("Delete user");
-            return new JsonResult(new { Data = "New User"});
-=======
             try
             {
             _logger.LogInformation("Delete user");
@@ -158,7 +139,6 @@ namespace ArtSofte_Test.Controllers
                 _logger.LogError(ex.Message);
                 await ErrorResult(ex.Message);
             }
->>>>>>> 7ada2322d999ce6c3528fc97f07a32f6579ae088
         }
     }
 }
