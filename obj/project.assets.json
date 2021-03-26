@@ -193,19 +193,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Слава\\.nuget\\packages\\": {}
+    "/home/slava/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Слава\\Desktop\\Dotnet\\ArtSofte_Test\\ArtSofte_Test.csproj",
+      "projectUniqueName": "/home/slava/DotNet/ArtSofte_Test/ArtSofte_Test.csproj",
       "projectName": "ArtSofte_Test",
-      "projectPath": "C:\\Users\\Слава\\Desktop\\Dotnet\\ArtSofte_Test\\ArtSofte_Test.csproj",
-      "packagesPath": "C:\\Users\\Слава\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Слава\\Desktop\\Dotnet\\ArtSofte_Test\\obj\\",
+      "projectPath": "/home/slava/DotNet/ArtSofte_Test/ArtSofte_Test.csproj",
+      "packagesPath": "/home/slava/.nuget/packages/",
+      "outputPath": "/home/slava/DotNet/ArtSofte_Test/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Слава\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "/home/slava/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net5.0"
@@ -252,7 +252,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.201\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/5.0.201/RuntimeIdentifierGraph.json"
       }
     }
   }
