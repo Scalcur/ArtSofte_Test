@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "hScEf5mioaTOfZsWH3k1eXwAUz+cosGN7w7kmAUvBzMee6d4XIhwEb8h3hkcTkQ6N3j2+HRwVqHehEMjlNShjA==",
+  "dgSpecHash": "2uK68rbLIu5QwHYOmsayoH0Rl7LlSWjK8+CaVeoKgGkyiYrgQArU+mVwdMalMRFQZMKI8PoT4Iz80Ysm3sFUow==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Слава\\Desktop\\Dotnet\\ArtSofte_Test\\ArtSofte_Test.csproj",
+  "projectFilePath": "c:\\Users\\Слава\\Desktop\\Dotnet\\ArtSofte_Test\\ArtSofte_Test.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Слава\\.nuget\\packages\\microsoft.extensions.apidescription.server\\3.0.0\\microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
     "C:\\Users\\Слава\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",

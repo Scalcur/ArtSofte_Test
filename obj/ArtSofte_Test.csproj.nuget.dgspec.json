@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Слава\\Desktop\\Dotnet\\ArtSofte_Test\\ArtSofte_Test.csproj": {}
+    "c:\\Users\\Слава\\Desktop\\Dotnet\\ArtSofte_Test\\ArtSofte_Test.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Слава\\Desktop\\Dotnet\\ArtSofte_Test\\ArtSofte_Test.csproj": {
+    "c:\\Users\\Слава\\Desktop\\Dotnet\\ArtSofte_Test\\ArtSofte_Test.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Слава\\Desktop\\Dotnet\\ArtSofte_Test\\ArtSofte_Test.csproj",
+        "projectUniqueName": "c:\\Users\\Слава\\Desktop\\Dotnet\\ArtSofte_Test\\ArtSofte_Test.csproj",
         "projectName": "ArtSofte_Test",
-        "projectPath": "C:\\Users\\Слава\\Desktop\\Dotnet\\ArtSofte_Test\\ArtSofte_Test.csproj",
+        "projectPath": "c:\\Users\\Слава\\Desktop\\Dotnet\\ArtSofte_Test\\ArtSofte_Test.csproj",
         "packagesPath": "C:\\Users\\Слава\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Слава\\Desktop\\Dotnet\\ArtSofte_Test\\obj\\",
+        "outputPath": "c:\\Users\\Слава\\Desktop\\Dotnet\\ArtSofte_Test\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Слава\\AppData\\Roaming\\NuGet\\NuGet.Config"
