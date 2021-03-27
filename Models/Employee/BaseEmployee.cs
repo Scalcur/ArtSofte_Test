@@ -12,5 +12,8 @@ namespace ArtSofte_Test.Models.Employee
 
         [JsonPropertyName("age")]
         public short Age { get; set; }
+
+        [JsonPropertyName("gender")]
+        public short Gender { get; set; }
     }
 }

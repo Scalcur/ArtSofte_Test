@@ -1,7 +1,87 @@
+using System.Threading.Tasks;
+using System.Linq;
+using Microsoft.Extensions.Logging;
+using ArtSofte_Test.Interfaces;
+using ArtSofte_Test.Models.Language;
+using System.Collections.Generic;
+using System;
+
 namespace ArtSofte_Test.Manager
 {
-    public class LangManager
+    public class LangManager : ILangManager
     {
+        public static List<ViewLang> Langs { get; set; } = new List<ViewLang>();
+
+        private readonly ILogger<LangManager> _logger;
+
+        public LangManager(ILogger<LangManager> logger)
+        {
+            _logger = logger;
+        }
+
+        public async Task<List<ViewLang>> GetAllLang()
+        {
+            return LangManager.Langs;
+        }
         
+        public async Task<ViewLang> GetLangById(string id)
+        {
+            var lang = LangManager.Langs.FirstOrDefault(elem => elem.LangId.ToString() == id);
+
+            if(lang == null)
+            {
+                throw new Exception("Language not found");
+            }
+
+            return lang;
+        }
+
+        public async Task<string> AddLang(CreateLang createLang)
+        {
+            var newLang = new ViewLang()
+                {
+                    LangId = Guid.NewGuid(),
+                    LangName = createLang.LangName
+                };
+
+            LangManager.Langs.Add(newLang);
+
+            return newLang.LangId.ToString();
+        }
+
+        public async Task<string> EditLang(ViewLang viewLang)
+        {
+            _logger.LogInformation("Edit language");
+
+                var editLang = LangManager.Langs.FirstOrDefault(elem => elem.LangId == viewLang.LangId);
+                if (editLang == null) 
+                {
+                  throw new Exception("Language not found");  
+                }
+
+                LangManager.Langs.Remove(editLang);
+                
+                editLang.LangId = viewLang.LangId;
+                editLang.LangName = viewLang.LangName;
+                
+                LangManager.Langs.Add(editLang);
+
+            return editLang.LangId.ToString();
+        }
+
+        public async Task<string> DeleteLang(string id)
+        {
+            _logger.LogInformation("Delete language");
+            
+             var editLang = LangManager.Langs.FirstOrDefault(elem => elem.LangId.ToString() == id);
+            if (editLang == null) 
+            {
+                throw new Exception("Language not found");  
+            }
+
+            LangManager.Langs.Remove(editLang);
+
+            return editLang.LangId.ToString();
+        }
     }
 }

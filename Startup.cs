@@ -21,6 +21,8 @@ namespace ArtSofte_Test
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddTransient<IEmployeeManager, EmployeeManager>();
+            services.AddTransient<ILangManager, LangManager>();
+            services.AddTransient<IDepManager, DepManager>();
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {

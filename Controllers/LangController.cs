@@ -2,7 +2,7 @@ using System;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using ArtSofte_Test.Models.Employee;
+using ArtSofte_Test.Models.Language;
 using ArtSofte_Test.Interfaces;
 
 namespace ArtSofte_Test.Controllers
@@ -52,7 +52,7 @@ namespace ArtSofte_Test.Controllers
         }
 
         [HttpPost("add")]
-        public async Task Add([FromBody] CreateEmployee createLang)
+        public async Task Add([FromBody] CreateLang createLang)
         {
             try
             {
@@ -72,8 +72,8 @@ namespace ArtSofte_Test.Controllers
         {
             try
             {
-                var employee = await _langManager.EditLang(viewLang);
-               await SuccessResult(employee);
+                var lang = await _langManager.EditLang(viewLang);
+               await SuccessResult(lang);
             }
             catch(Exception ex)
             {
@@ -88,7 +88,7 @@ namespace ArtSofte_Test.Controllers
         {
             try
             {
-                var employee = await _langManager.DeleteLang(id);
+                var lang = await _langManager.DeleteLang(id);
                await SuccessResult(lang);
             }
             catch(Exception ex)
@@ -97,8 +97,5 @@ namespace ArtSofte_Test.Controllers
                 await ErrorResult(ex.Message);
             }
         }
-    }
-}
-        
     }
 }

@@ -1,4 +1,3 @@
-using ArtSofte_Test.Controllers;
 using System.Threading.Tasks;
 using System.Linq;
 using Microsoft.Extensions.Logging;
@@ -11,7 +10,7 @@ namespace ArtSofte_Test.Manager
 {
     public class EmployeeManager : IEmployeeManager
     {
-        public static List<ViewEmployee> Employees { get; set; } = new List<ViewEmployee>();// 1) local dB 2)LINQ
+        public static List<ViewEmployee> Employees { get; set; } = new List<ViewEmployee>();
 
         private readonly ILogger<EmployeeManager> _logger;
 
@@ -45,7 +44,8 @@ namespace ArtSofte_Test.Manager
                     FirstName = createEmployee.FirstName,
                     SecondName = createEmployee.SecondName,
                     CompanyRefId = createEmployee.CompanyRefId,
-                    Age = createEmployee.Age
+                    Age = createEmployee.Age,
+                    Gender = createEmployee.Gender
                 };
 
             EmployeeManager.Employees.Add(newEmployee);
@@ -60,7 +60,7 @@ namespace ArtSofte_Test.Manager
                 var editEmployee = EmployeeManager.Employees.FirstOrDefault(elem => elem.EmployeeId == viewEmployee.EmployeeId);
                 if (editEmployee == null) 
                 {
-                  throw new Exception("employee not found");  
+                  throw new Exception("Employee not found");  
                 }
 
                 EmployeeManager.Employees.Remove(editEmployee);
@@ -68,6 +68,7 @@ namespace ArtSofte_Test.Manager
                 editEmployee.FirstName = viewEmployee.FirstName;
                 editEmployee.SecondName = viewEmployee.SecondName;
                 editEmployee.Age = viewEmployee.Age;
+                editEmployee.Gender = viewEmployee.Gender;
                 editEmployee.CompanyRefId = viewEmployee.CompanyRefId;
 
                 EmployeeManager.Employees.Add(editEmployee);
@@ -82,7 +83,7 @@ namespace ArtSofte_Test.Manager
              var editEmployee = EmployeeManager.Employees.FirstOrDefault(elem => elem.EmployeeId.ToString() == id);
             if (editEmployee == null) 
             {
-                throw new Exception("employee not found");  
+                throw new Exception("Employee not found");  
             }
 
             EmployeeManager.Employees.Remove(editEmployee);
