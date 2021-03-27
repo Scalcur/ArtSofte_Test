@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using ArtSofte_Test.Models;
 using ArtSofte_Test.Models.Employee;
+using ArtSofte_Test.Manager;
 
 namespace ArtSofte_Test.Controllers
 {
@@ -25,9 +26,7 @@ namespace ArtSofte_Test.Controllers
         {
             try
             {
-                _logger.LogInformation("User List");
-
-                await SuccessResult(EmployeeController.Employees);
+                
             }
             catch(Exception ex)
             {
@@ -41,19 +40,11 @@ namespace ArtSofte_Test.Controllers
         {
             try
             {
-            var employee = EmployeeController.Employees.FirstOrDefault(elem => elem.EmployeeId.ToString() == id);
-
-            if(employee == null)
-            {
-                await ErrorResult("Employee not found");
-            }
-
-            await SuccessResult(employee);
+               _GetById(id);
             }
             catch(Exception ex)
             {
-                _logger.LogError(ex.Message);
-                await ErrorResult(ex.Message);
+               
             }
         }
 
