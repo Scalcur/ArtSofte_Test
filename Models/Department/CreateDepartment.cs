@@ -6,6 +6,6 @@ namespace ArtSofte_Test.Models.Department
     public class CreateDepartment : BaseDepartment
     {
         [JsonPropertyName("depRefId")]
-        public Guid DepRefId { get; set; }
+        public Guid DepId { get; set; }
     }
 }

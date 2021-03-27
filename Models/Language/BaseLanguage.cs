@@ -1,10 +1,10 @@
-using System;
+using System.Text.Json.Serialization;
 
 namespace ArtSofte_Test.Models
 {
     public class BaseLanguage
-    {        
-        public Guid LangId { get; set; }
+    {   
+        [JsonPropertyName("langName")]     
         public string LangName { get; set; }
 
     }

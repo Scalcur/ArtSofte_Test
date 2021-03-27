@@ -6,7 +6,7 @@ namespace ArtSofte_Test.Models.Language
     public class ViewLang : BaseLanguage
     {
         [JsonPropertyName("langRefId")]
-        public Guid LangRefId { get; set; }
+        public Guid LangId { get; set; }
 
     }
 }
