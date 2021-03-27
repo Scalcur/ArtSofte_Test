@@ -2,7 +2,7 @@ using System;
 using System.Text.Json.Serialization;
 
 
-namespace ArtSofte_Test.Models
+namespace ArtSofte_Test.Models.Employee
 {
     public class ViewEmployee : BaseEmployee
     {
