@@ -5,6 +5,7 @@ using ArtSofte_Test.Interfaces;
 using ArtSofte_Test.Models.Language;
 using System.Collections.Generic;
 using System;
+using ArtSofte_Test.DataBase;
 
 namespace ArtSofte_Test.Manager
 {
@@ -12,16 +13,19 @@ namespace ArtSofte_Test.Manager
     {
         public static List<ViewLang> Langs { get; set; } = new List<ViewLang>();
 
+        private InMemoryDbСontext _context;
+
         private readonly ILogger<LangManager> _logger;
 
-        public LangManager(ILogger<LangManager> logger)
+        public LangManager(ILogger<LangManager> logger, InMemoryDbСontext context)
         {
             _logger = logger;
+            _context = context;
         }
 
         public async Task<List<ViewLang>> GetAllLang()
         {
-            return LangManager.Langs;
+            return _context.Langs.ToList();
         }
         
         public async Task<ViewLang> GetLangById(string id)

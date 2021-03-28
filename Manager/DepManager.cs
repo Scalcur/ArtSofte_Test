@@ -5,23 +5,26 @@ using ArtSofte_Test.Interfaces;
 using ArtSofte_Test.Models.Department;
 using System.Collections.Generic;
 using System;
+using ArtSofte_Test.DataBase;
 
 namespace ArtSofte_Test.Manager
 {
     public class DepManager : IDepManager
     {
         public static List<ViewDepartment> Deps { get; set; } = new List<ViewDepartment>();
+        private InMemoryDbСontext _context;
 
         private readonly ILogger<DepManager> _logger;
 
-        public DepManager(ILogger<DepManager> logger)
+        public DepManager(ILogger<DepManager> logger, InMemoryDbСontext context)
         {
             _logger = logger;
+            _context = context;
         }
 
         public async Task<List<ViewDepartment>> GetAllDep()
         {
-            return DepManager.Deps;
+            return _context.Departments.ToList();
         }
         
         public async Task<ViewDepartment> GetDepById(string id)

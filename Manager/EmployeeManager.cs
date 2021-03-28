@@ -5,6 +5,7 @@ using ArtSofte_Test.Interfaces;
 using ArtSofte_Test.Models.Employee;
 using System.Collections.Generic;
 using System;
+using ArtSofte_Test.DataBase;
 
 namespace ArtSofte_Test.Manager
 {
@@ -12,16 +13,19 @@ namespace ArtSofte_Test.Manager
     {
         public static List<ViewEmployee> Employees { get; set; } = new List<ViewEmployee>();
 
+        private InMemoryDbСontext _context;
+
         private readonly ILogger<EmployeeManager> _logger;
 
-        public EmployeeManager(ILogger<EmployeeManager> logger)
+        public EmployeeManager(ILogger<EmployeeManager> logger, InMemoryDbСontext context)
         {
             _logger = logger;
+            _context = context;
         }
 
         public async Task<List<ViewEmployee>> GetAllEmployee()
         {
-            return EmployeeManager.Employees;
+            return  _context.Employees.ToList();
         }
         
         public async Task<ViewEmployee> GetEmployeeById(string id)

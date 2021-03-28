@@ -12,5 +12,7 @@ namespace ArtSofte_Test.Models.Employee
         [JsonPropertyName("companyRefId")]
         public Guid CompanyRefId { get; set; }
 
+        public int Id { get; set; }
+
     }
 }

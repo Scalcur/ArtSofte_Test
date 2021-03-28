@@ -13,11 +13,11 @@ namespace ArtSofte_Test.DataBase
 
         }
 
-        public DbSet<CreateEmployee> Employees { get; set;}
+        public DbSet<ViewEmployee> Employees { get; set;}
 
-        public DbSet<CreateLang> Langs { get; set;}
+        public DbSet<ViewLang> Langs { get; set;}
 
-        public DbSet<CreateDepartment> Departments { get; set;}
+        public DbSet<ViewDepartment> Departments { get; set;}
     }
 
 }

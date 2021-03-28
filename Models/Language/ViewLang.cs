@@ -8,5 +8,7 @@ namespace ArtSofte_Test.Models.Language
         [JsonPropertyName("langRefId")]
         public Guid LangId { get; set; }
 
+        public int Id { get; set; }
+
     }
 }

@@ -1,11 +1,7 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
+using ArtSofte_Test.DataBase;
 
 namespace ArtSofte_Test
 {
@@ -14,6 +10,17 @@ namespace ArtSofte_Test
         public static void Main(string[] args)
         {
             var host = CreateHostBuilder(args).Build();
+
+            using (var scope = host.Services.CreateScope())
+        {
+            
+            var services = scope.ServiceProvider;
+            var context = services.GetRequiredService<InMemoryDbСontext>();
+
+            
+            DataGenerator.Initialize(services);
+        }
+
             host.Run();
         }
 

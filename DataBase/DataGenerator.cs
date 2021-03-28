@@ -8,9 +8,9 @@ using System;
 
 namespace ArtSofte_Test.DataBase
 {
-    public class DataGenerator
+    public static class DataGenerator
     {
-        public static void InitializeEmployee(IServiceProvider serviceProvider)
+        public static void Initialize(IServiceProvider serviceProvider)
      {
          using (var context = new InMemoryDbСontext(
              serviceProvider.GetRequiredService<DbContextOptions<InMemoryDbСontext>>()))
@@ -32,25 +32,33 @@ namespace ArtSofte_Test.DataBase
              }
 
              context.Employees.Add(
-                 new CreateEmployee
+                 new ViewEmployee
                  {
                      FirstName = "Test",
                      SecondName = "Test",
                      Age = 18,
-                     Gender = "Male"
+                     Gender = "Male",
+                     EmployeeId = Guid.NewGuid()
                  });
+
+            context.SaveChanges();
 
             context.Langs.Add(
-                 new CreateLang
+                 new ViewLang
                  {
-                     LangName = "Lang"
+                    LangName = "Lang",
+                    LangId = Guid.NewGuid()
                  });
+            
+            context.SaveChanges();
 
             context.Departments.Add(
-                 new CreateDepartment
+                 new ViewDepartment
                  {
                      DepName = "Dep",
-                     DepFloor = 10
+                     DepFloor = 10,
+                     DepId = Guid.NewGuid()
+
                  });
 
              context.SaveChanges();
