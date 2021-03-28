@@ -47,7 +47,7 @@ namespace ArtSofte_Test.Manager
                     EmployeeId = Guid.NewGuid(),
                     FirstName = createEmployee.FirstName,
                     SecondName = createEmployee.SecondName,
-                    CompanyRefId = createEmployee.CompanyRefId,
+                    DepRefId = createEmployee.DepRefId,
                     Age = createEmployee.Age,
                     Gender = createEmployee.Gender
                 };
@@ -73,7 +73,7 @@ namespace ArtSofte_Test.Manager
                 editEmployee.SecondName = viewEmployee.SecondName;
                 editEmployee.Age = viewEmployee.Age;
                 editEmployee.Gender = viewEmployee.Gender;
-                editEmployee.CompanyRefId = viewEmployee.CompanyRefId;
+                editEmployee.DepRefId = viewEmployee.DepRefId;
 
                 EmployeeManager.Employees.Add(editEmployee);
 

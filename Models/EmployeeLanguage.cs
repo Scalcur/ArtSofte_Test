@@ -11,5 +11,7 @@ namespace ArtSofte_Test.Models
 
         public Guid LangId { get; set; }
         public ViewLang Lang { get; set; }
+
+        public int Id { get; set; }
     }
 }
