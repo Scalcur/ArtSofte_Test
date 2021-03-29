@@ -25,7 +25,7 @@ namespace ArtSofte_Test.DataBase
                     {
                         DepName = "Dep1",
                         DepFloor = 10,
-                        DepId = Guid.NewGuid()
+                        //DepId = Guid.NewGuid()
 
                     };
 
@@ -33,7 +33,7 @@ namespace ArtSofte_Test.DataBase
                     {
                         DepName = "Dep2",
                         DepFloor = 5,
-                        DepId = Guid.NewGuid()
+                        //DepId = Guid.NewGuid()
 
                     };
 
@@ -41,7 +41,7 @@ namespace ArtSofte_Test.DataBase
                     {
                         DepName = "Dep3",
                         DepFloor = 10,
-                        DepId = Guid.NewGuid()
+                        //DepId = Guid.NewGuid()
 
                     };
                 
@@ -52,19 +52,19 @@ namespace ArtSofte_Test.DataBase
                 ViewLang Lang1 = new ViewLang
                     {
                         LangName = "Lang1",
-                        LangId = Guid.NewGuid()
+                        //LangId = Guid.NewGuid()
                     };
 
                 ViewLang Lang2 = new ViewLang
                     {
                         LangName = "Lang2",
-                        LangId = Guid.NewGuid()
+                        //LangId = Guid.NewGuid()
                     };
 
                 ViewLang Lang3 = new ViewLang
                     {
                         LangName = "Lang3",
-                        LangId = Guid.NewGuid()
+                        //LangId = Guid.NewGuid()
                     };
                 
                 context.Langs.AddRange(new List<ViewLang> { Lang1, Lang2, Lang3 });
@@ -77,8 +77,8 @@ namespace ArtSofte_Test.DataBase
                         SecondName = "Test1",
                         Age = 18,
                         Gender = "Male",
-                        DepRefId = Dep1.DepId,
-                        EmployeeId = Guid.NewGuid()
+                        DepRefId = Dep1.Id,
+                        //EmployeeId = Guid.NewGuid()
 
                     };
 
@@ -88,8 +88,8 @@ namespace ArtSofte_Test.DataBase
                         SecondName = "Test2",
                         Age = 20,
                         Gender = "Female",
-                        DepRefId = Dep2.DepId,
-                        EmployeeId = Guid.NewGuid()
+                        DepRefId = Dep2.Id,
+                        //EmployeeId = Guid.NewGuid()
                     };
 
                 ViewEmployee Employee3 = new ViewEmployee
@@ -98,8 +98,8 @@ namespace ArtSofte_Test.DataBase
                         SecondName = "Test3",
                         Age = 40,
                         Gender = "Male",
-                        DepRefId = Dep3.DepId,
-                        EmployeeId = Guid.NewGuid()
+                        DepRefId = Dep3.Id,
+                        //EmployeeId = Guid.NewGuid()
                     };
                 
                 context.Employees.AddRange(new List<ViewEmployee> { Employee1, Employee2, Employee3 });
@@ -107,9 +107,9 @@ namespace ArtSofte_Test.DataBase
                 context.SaveChanges();
 
 
-                Employee1.EmployeeLanguages.Add(new EmployeeLanguage { LangId = Lang1.LangId, EmployeeId = Employee1.EmployeeId });
-                Employee2.EmployeeLanguages.Add(new EmployeeLanguage { LangId = Lang2.LangId, EmployeeId = Employee2.EmployeeId });
-                Employee3.EmployeeLanguages.Add(new EmployeeLanguage { LangId = Lang3.LangId, EmployeeId = Employee3.EmployeeId });
+                Employee1.EmployeeLanguages.Add(new EmployeeLanguage { LangId = Lang1.Id, EmployeeId = Employee1.Id });
+                Employee2.EmployeeLanguages.Add(new EmployeeLanguage { LangId = Lang2.Id, EmployeeId = Employee2.Id });
+                Employee3.EmployeeLanguages.Add(new EmployeeLanguage { LangId = Lang3.Id, EmployeeId = Employee3.Id });
                 context.SaveChanges();
 
              }

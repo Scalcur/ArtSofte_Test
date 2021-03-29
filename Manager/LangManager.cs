@@ -44,21 +44,21 @@ namespace ArtSofte_Test.Manager
         {
             var newLang = new ViewLang()
                 {
-                    LangId = Guid.NewGuid(),
+                    //Id = Guid.NewGuid(),
                     LangName = createLang.LangName
                 };
 
             _context.Langs.Add(newLang);
             _context.SaveChanges();
 
-            return newLang.LangId.ToString();
+            return newLang.Id.ToString();
         }
 
         public async Task<string> EditLang(ViewLang viewLang)
         {
             _logger.LogInformation("Edit language");
 
-                var editLang = _context.Langs.Find(Convert.ToInt32(viewLang.Id));
+                var editLang = _context.Langs.Find(viewLang.Id);
                 if (editLang == null) 
                 {
                   throw new Exception("Language not found");  
@@ -67,13 +67,13 @@ namespace ArtSofte_Test.Manager
                 _context.Langs.Remove(editLang);
                 _context.SaveChanges();
                 
-                editLang.LangId = viewLang.LangId;
+                //editLang.Id = viewLang.Id;
                 editLang.LangName = viewLang.LangName;
                 
                 _context.Langs.Add(editLang);
                 _context.SaveChanges();
 
-            return editLang.LangId.ToString();
+            return editLang.Id.ToString();
         }
 
         public async Task<string> DeleteLang(string id)
@@ -89,7 +89,7 @@ namespace ArtSofte_Test.Manager
             _context.Langs.Remove(editLang);
             _context.SaveChanges();
 
-            return editLang.LangId.ToString();
+            return editLang.Id.ToString();
         }
     }
 }

@@ -7,10 +7,10 @@ namespace ArtSofte_Test.Models.Employee
     public class ViewEmployee : BaseEmployee
     {
         [JsonPropertyName("employeeRefId")]
-        public Guid EmployeeId { get; set; }
+        public int Id { get; set; }
 
         [JsonPropertyName("depRefId")]
-        public Guid DepRefId { get; set; }
+        public int DepRefId { get; set; }
 
         public List<EmployeeLanguage> EmployeeLanguages { get; set; }
 
@@ -19,7 +19,7 @@ namespace ArtSofte_Test.Models.Employee
             EmployeeLanguages = new List<EmployeeLanguage>();
         }
 
-        public int Id { get; set; }
+        //public int Id { get; set; }
 
     }
 }

@@ -6,12 +6,11 @@ namespace ArtSofte_Test.Models
 {
     public class EmployeeLanguage
     {
-        public Guid EmployeeId { get; set; }
+        public int EmployeeId { get; set; }
         public ViewEmployee Employee { get; set; }
 
-        public Guid LangId { get; set; }
+        public int LangId { get; set; }
         public ViewLang Lang { get; set; }
 
-        public int Id { get; set; }
     }
 }

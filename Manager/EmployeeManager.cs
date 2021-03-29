@@ -44,7 +44,7 @@ namespace ArtSofte_Test.Manager
         {
             var newEmployee = new ViewEmployee()
                 {
-                    EmployeeId = Guid.NewGuid(),
+                    //EmployeeId = Guid.NewGuid(),
                     FirstName = createEmployee.FirstName,
                     SecondName = createEmployee.SecondName,
                     DepRefId = createEmployee.DepRefId,
@@ -56,14 +56,15 @@ namespace ArtSofte_Test.Manager
             _context.SaveChanges();
             
 
-            return newEmployee.EmployeeId.ToString();
+            return newEmployee.Id.ToString();
         }
 
         public async Task<string> EditEmployee(ViewEmployee viewEmployee)
         {
             _logger.LogInformation("Edit user");
 
-                var editEmployee = _context.Employees.Find(Convert.ToInt32(viewEmployee.Id));
+                //var editEmployee = _context.Employees.Find(Convert.ToInt32(viewEmployee.Id));
+                var editEmployee = _context.Employees.Find(viewEmployee.Id);
                 if (editEmployee == null) 
                 {
                   throw new Exception("Employee not found");  
@@ -78,13 +79,13 @@ namespace ArtSofte_Test.Manager
                 editEmployee.Gender = viewEmployee.Gender;
                 editEmployee.DepRefId = viewEmployee.DepRefId;
                 editEmployee.EmployeeLanguages = viewEmployee.EmployeeLanguages;
-                editEmployee.EmployeeId = viewEmployee.EmployeeId;
                 editEmployee.Id = viewEmployee.Id;
+                //editEmployee.Id = viewEmployee.Id;
 
                 _context.Employees.Add(editEmployee);
                 _context.SaveChanges();
 
-            return editEmployee.EmployeeId.ToString();
+            return editEmployee.Id.ToString();
         }
 
         public async Task<string> DeleteEmployee(string id)
@@ -100,7 +101,7 @@ namespace ArtSofte_Test.Manager
             _context.Employees.Remove(editEmployee);
             _context.SaveChanges();
 
-            return editEmployee.EmployeeId.ToString();
+            return editEmployee.Id.ToString();
         }
     }
 }

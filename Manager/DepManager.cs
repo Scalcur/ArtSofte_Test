@@ -43,7 +43,7 @@ namespace ArtSofte_Test.Manager
         {
             var newDep = new ViewDepartment()
                 {
-                    DepId = Guid.NewGuid(),
+                    //DepId = Guid.NewGuid(),
                     DepName = createDepartment.DepName,
                     DepFloor = createDepartment.DepFloor
                 };
@@ -51,14 +51,14 @@ namespace ArtSofte_Test.Manager
             _context.Departments.Add(newDep);
             _context.SaveChanges();
 
-            return newDep.DepId.ToString();
+            return newDep.Id.ToString();
         }
 
         public async Task<string> EditDep(ViewDepartment viewDepartment)
         {
             _logger.LogInformation("Edit department");
 
-                var editDep = _context.Departments.Find(Convert.ToInt32(viewDepartment.Id));
+                var editDep = _context.Departments.Find(viewDepartment.Id);
                 if (editDep == null) 
                 {
                   throw new Exception("Department not found");  
@@ -67,14 +67,14 @@ namespace ArtSofte_Test.Manager
                 _context.Departments.Remove(editDep);
                 _context.SaveChanges();
                 
-                editDep.DepId = viewDepartment.DepId;
+                editDep.Id = viewDepartment.Id;
                 editDep.DepName = viewDepartment.DepName;
                 editDep.DepFloor = viewDepartment.DepFloor;
                 
                 _context.Departments.Add(editDep);
                 _context.SaveChanges();
 
-            return editDep.DepId.ToString();
+            return editDep.Id.ToString();
         }
 
         public async Task<string> DeleteDep(string id)
@@ -90,7 +90,7 @@ namespace ArtSofte_Test.Manager
             _context.Departments.Remove(editDep);
             _context.SaveChanges();
 
-            return editDep.DepId.ToString();
+            return editDep.Id.ToString();
         }
     }
 }
