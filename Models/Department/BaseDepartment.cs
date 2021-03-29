@@ -6,7 +6,9 @@ namespace ArtSofte_Test.Models
     {
         [JsonPropertyName("depName")] 
         public string DepName { get; set; } 
-        [JsonPropertyName("depFloor")] 
+
+        //[JsonPropertyName("depFloor")]
+        [JsonIgnore] 
         public short DepFloor { get; set; }
 
     }

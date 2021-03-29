@@ -7,10 +7,10 @@ namespace ArtSofte_Test.Models.Employee
 {
     public class ViewEmployee : BaseEmployee
     {
-        [JsonPropertyName("employeeRefId")]
+        [JsonPropertyName("employeeId")]
         public int Id { get; set; }
 
-        [JsonPropertyName("depRefId")]
+        [JsonIgnore]
         public int DepRefId { get; set; }
 
         public ViewDepartment Department { get; set; }

@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title></title>
+  <link rel="stylesheet" href="style/style.css" />
+</head>
+<body>
+		
+		<table class="table">
+		
+		<tr><th colspan="6">Список сотрудников</th></tr>
+		
+		<tr>
+		<th>Имя</th>
+		<th>Фамилия</th>
+		<th>Пол</th>
+		<th>Возраст</th>
+		<th>Отдел</th>
+		<th>Язык программирования</th>
+		<th></th>
+		</tr>
+		
+		<tr>
+		<td>Test</td>
+		<td>Test</td>
+		<td>М</td>
+		<td>18</td>
+		<td>Отдел 1</td>
+		<th>С++</th>
+		<th>
+			<form method="PUT" action="https://localhost:5001/employee/edit">
+				<input type="submit" value="Изменить"/>
+			</form>
+			<form method="DELETE" action="https://localhost:5001/employee/delete">
+				<input type="submit" value="Удалить"/>
+			</form>
+		</th>
+		</tr>
+		
+		
+		<tr>
+		<td>Test2</td>
+		<td>Test2</td>
+		<td>Ж</td>
+		<td>22</td>
+		<td>Отдел 2</td>
+		<th>С#</th>
+		<th>
+			<form method="POST" action="">
+				<input type="hidden" name="product_id" value=""/>
+				<input type="submit" value="Изменить"/>
+			</form>
+			<form method="POST" action="">
+				<input type="hidden" name="product_id" value=""/>
+				<input type="submit" value="Удалить"/>
+			</form>
+		</th>
+		</tr>
+		
+		</table>
+		
+</body>
+</html>
