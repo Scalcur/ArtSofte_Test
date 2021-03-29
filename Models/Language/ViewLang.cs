@@ -5,7 +5,7 @@ namespace ArtSofte_Test.Models.Language
 {
     public class ViewLang : BaseLanguage
     {
-        [JsonIgnore]
+        
         public int Id { get; set; }
 
         [JsonIgnore]

@@ -13,7 +13,11 @@
 		<table class="table table-striped">
 		
 			<tr><th colspan="6">Список сотрудников</th></tr>
-			<tr><th colspan="1"><left><form method="GET" action="Add.html"><input type="submit" value="Добавить"/></form></left></th></tr>
+			<tr><th colspan="1"><left><form method="GET" action="Add.html"><input type="submit" value="Добавить"/></form></left></th>
+			
+			<th colspan="1"><form method="PUT" action="Edit.html">
+										<input type="submit" value="Изменить"/>
+			</form></th></tr>
 		
 			<tr>
 			<th>Имя</th>
@@ -58,9 +62,7 @@
 								<th>${responseData[i].department.depName}</th>
 								<th>${responseData[i].employeeLanguages[0].lang.langName}</th>
 								<th>
-									<form method="PUT" action="Edit.html">
-										<input type="submit" value="Изменить"/>
-									</form>
+									
 									<form method="get" action="https://localhost:5001/employee/delete/` + `${responseData[i].employeeId}` + `">
 										<input type="submit" value="Удалить"/>
 									</form>

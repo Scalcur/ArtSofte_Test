@@ -7,58 +7,118 @@
 </head>
 <body>
 		
-		<table class="table">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		
-		<tr><th colspan="6">Список сотрудников</th></tr>
+		<div class="form-wrap">
+		<left><form method="get" action="Employee.html"><input type="submit" value="Назад"/></form></left>
 		
-		<tr>
-		<th>Имя</th>
-		<th>Фамилия</th>
-		<th>Пол</th>
-		<th>Возраст</th>
-		<th>Отдел</th>
-		<th>Язык программирования</th>
-		<th></th>
-		</tr>
-		
-		<tr>
-		<td>Test</td>
-		<td>Test</td>
-		<td>М</td>
-		<td>18</td>
-		<td>Отдел 1</td>
-		<th>С++</th>
-		<th>
-			<form method="GET" action="Edit.html">
-				<input type="submit" value="Изменить"/>
-			</form>
-			<form method="DELETE" action="https://localhost:5001/employee/delete">
-				<input type="submit" value="Удалить"/>
-			</form>
-		</th>
-		</tr>
+			<h1>Изменение данных сотрудника</h1>
+		</div>
 		
 		
-		<tr>
-		<td>Test2</td>
-		<td>Test2</td>
-		<td>Ж</td>
-		<td>22</td>
-		<td>Отдел 2</td>
-		<th>С#</th>
-		<th>
-			<form method="POST" action="">
-				<input type="hidden" name="product_id" value=""/>
-				<input type="submit" value="Изменить"/>
-			</form>
-			<form method="POST" action="">
-				<input type="hidden" name="product_id" value=""/>
-				<input type="submit" value="Удалить"/>
-			</form>
-		</th>
-		</tr>
+		  <form id="form" method="put" action="https://localhost:5001/employee/edit">
+			<div>
+			  <label for="name">Имя</label>
+			  <input id="firstName" type="text" name="firstName" required>
+			</div>
+			<div>
+			  <label for="name">Фамилия</label>
+			  <input id="secondName" type="text" name="secondName" required>
+			</div>
+			<div>
+			  <label for="name">Возраст</label>
+			  <input id="age" type="number" name="age" required>
+			</div>
+			<div class="radio">
+			  <span>Пол</span>
+			  <select id="gender" name="gender">
+				<option>Выберите пол</option>
+				<option value="Male">Мужской</option> 
+				<option value="Female">Женский</option> 
+			  </select> 
+			  <div class="select-arrow"></div>
+			</div>
+			<div id="codeCh">
+				  
+				<label for="name">Отдел</label>
+				  <select id="Deps" name="depRefId">
+					 
+				</select>   
+				
+				<div>
+				  <label for="name">ID</label>
+				  <select id="id" name="id">
+					 
+				  </select> 
+				  <div class="select-arrow"></div> 
+				</div>
+				<button type="submit">Отправить</button> 
+			  </form>
+			  
+			</div>
+			
+		<script>
+		var myArray = []
 		
-		</table>
+
+		$.ajax({
+			method:'GET',
+			url:'https://localhost:5001/employee/',
+			success:function(response){
+				myArray = response.responseData
+				buildTable3(myArray)
+				console.log(myArray)
+			}
+		})
+
+
+
+		function buildTable3(responseData){
+			var select = document.getElementById('id')
+			
+			
+			select.innerHTML += row
+
+			for (var i = 0; i < responseData.length; i++)
+			{
+				var row = `<option value="${responseData[i].employeeId}">${responseData[i].employeeId}</option>`
+				select.innerHTML += row
+
+
+			}
+			
+		}
+		
+		$.ajax({
+			method:'GET',
+			url:'https://localhost:5001/dep',
+			success:function(response){
+				myArray = response.responseData
+				buildTable(myArray)
+				console.log(myArray)
+			}
+		})
+
+
+
+		function buildTable(responseData){
+			var select = document.getElementById('Deps')
+			
+			var row = `<option>Выберите отдел</option>`
+			
+			select.innerHTML += row
+
+			for (var i = 0; i < responseData.length; i++)
+			{
+				var row = `<option value="${responseData[i].id}">${responseData[i].depName}</option>`
+				select.innerHTML += row
+
+
+			}
+			
+		}
+
+		</script>
 		
 </body>
 </html>

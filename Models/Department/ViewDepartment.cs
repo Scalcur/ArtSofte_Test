@@ -8,7 +8,7 @@ namespace ArtSofte_Test.Models.Department
     public class ViewDepartment : BaseDepartment
     {
         //[JsonPropertyName("depId")]
-        [JsonIgnore]
+        
         //public Guid DepId { get; set; }
         public int Id { get; set; }
 

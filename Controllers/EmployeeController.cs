@@ -52,49 +52,61 @@ namespace ArtSofte_Test.Controllers
         }
 
         [HttpPost("add")]
-        public async Task Add([FromBody] CreateEmployee createEmployee)
+        public async Task<RedirectResult> Add([FromForm] CreateEmployee createEmployee)
         {
             try
             {
-                var employee = await _employeeManager.AddEmployee(createEmployee); 
-               await SuccessResult(employee);
+                var employee = await _employeeManager.AddEmployee(createEmployee);
+                string url = "http://127.0.0.1:5500/wwwroot/Employee.html";
+                RedirectResult redirectResult = new RedirectResult(url, true);
+                return redirectResult;
             }
             catch(Exception ex)
             {
-                _logger.LogError(ex.Message);
-                await ErrorResult(ex.Message);
+               _logger.LogError(ex.Message);  
+                string url = "http://127.0.0.1:5500/wwwroot/Employee.html";
+                RedirectResult redirectResult = new RedirectResult(url, true);
+                return redirectResult;
             }
             
         }
 
         [HttpPut("edit")]
-        async public Task Edit([FromBody] ViewEmployee viewEmployee)
+        async public Task<RedirectResult> Edit([FromForm] ViewEmployee viewEmployee)
         {
             try
             {
                 var employee = await _employeeManager.EditEmployee(viewEmployee);
-               await SuccessResult(employee);
+                string url = "http://127.0.0.1:5500/wwwroot/Employee.html";
+                RedirectResult redirectResult = new RedirectResult(url, true);
+                return redirectResult;
             }
             catch(Exception ex)
             {
-                _logger.LogError(ex.Message);
-                await ErrorResult(ex.Message);
+                _logger.LogError(ex.Message);  
+                string url = "http://127.0.0.1:5500/wwwroot/Employee.html";
+                RedirectResult redirectResult = new RedirectResult(url, true);
+                return redirectResult;
             }
             
         }
 
         [HttpGet("delete/{id}")]
-        async public Task Delete(string id)
+        public async Task<RedirectResult> Delete(string id)
         {
             try
             {
                 var employee = await _employeeManager.DeleteEmployee(id);
-               await SuccessResult(employee);
+                string url = "http://127.0.0.1:5500/wwwroot/Employee.html";
+                RedirectResult redirectResult = new RedirectResult(url, true);
+                return redirectResult;
             }
             catch(Exception ex)
             {
-                _logger.LogError(ex.Message);
-                await ErrorResult(ex.Message);
+                _logger.LogError(ex.Message);  
+                string url = "http://127.0.0.1:5500/wwwroot/Employee.html";
+                RedirectResult redirectResult = new RedirectResult(url, true);
+                return redirectResult;
             }
         }
     }

@@ -50,19 +50,25 @@ namespace ArtSofte_Test.Manager
 
         public async Task<string> AddEmployee(CreateEmployee createEmployee)
         {
+            var department = _context.Departments.FirstOrDefault(el => el.Id == createEmployee.DepRefId);
+            var language = _context.Langs.FirstOrDefault(el => el.Id == createEmployee.LangIdForCreate);
+
             var newEmployee = new ViewEmployee()
                 {
-                    //EmployeeId = Guid.NewGuid(),
                     FirstName = createEmployee.FirstName,
                     SecondName = createEmployee.SecondName,
                     DepRefId = createEmployee.DepRefId,
                     Age = createEmployee.Age,
-                    Gender = createEmployee.Gender
+                    Gender = createEmployee.Gender,
+                    Department = department
                 };
 
             _context.Employees.Add(newEmployee);
             _context.SaveChanges();
-            
+
+            var connectLang = new EmployeeLanguage { LangId = createEmployee.LangIdForCreate, EmployeeId = newEmployee.Id };
+            newEmployee.EmployeeLanguages.Add(connectLang);
+            _context.SaveChanges();
 
             return newEmployee.Id.ToString();
         }
@@ -88,7 +94,6 @@ namespace ArtSofte_Test.Manager
                 editEmployee.DepRefId = viewEmployee.DepRefId;
                 editEmployee.EmployeeLanguages = viewEmployee.EmployeeLanguages;
                 editEmployee.Id = viewEmployee.Id;
-                //editEmployee.Id = viewEmployee.Id;
 
                 _context.Employees.Add(editEmployee);
                 _context.SaveChanges();

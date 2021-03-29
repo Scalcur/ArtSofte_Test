@@ -28,7 +28,7 @@
 			</div>
 			<div class="radio">
 			  <span>Пол</span>
-			  <select id="gender" name="Gender">
+			  <select id="gender" name="gender">
 				<option>Выберите пол</option>
 				<option value="Male">Мужской</option> 
 				<option value="Female">Женский</option> 
@@ -38,14 +38,14 @@
 			<div id="codeCh">
 			
 					<label for="name">Отдел</label>
-				  <select id="Deps">
+				  <select id="Deps" name="depRefId">
 					 
 				  </select> 
 				  <div class="select-arrow"></div>
 				  
 				  <div>
-				  <label for="country">Язык</label>
-				  <select id="Langs">
+				  <label for="name">Язык</label>
+				  <select id="Langs" name="langIdForCreate">
 					 
 				  </select> 
 				  <div class="select-arrow"></div> 
@@ -80,7 +80,7 @@
 
 			for (var i = 0; i < responseData.length; i++)
 			{
-				var row = `<option value="Dep">${responseData[i].depName}</option>`
+				var row = `<option value="${responseData[i].id}">${responseData[i].depName}</option>`
 				select.innerHTML += row
 
 
@@ -110,7 +110,7 @@
 
 			for (var i = 0; i < responseData.length; i++)
 			{
-				var row = `<option value="Lang">${responseData[i].langName}</option>`
+				var row = `<option value="${responseData[i].id}">${responseData[i].langName}</option>`
 				select.innerHTML += row
 
 
