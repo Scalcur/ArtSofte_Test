@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title></title>
+  <link rel="stylesheet" href="style/style.css" />
+</head>
+<body>
+		
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		
+		<div class="form-wrap">
+			<h1>Добавить сотрудника</h1>
+		  </div>
+		  <form id="form" method="post" action="https://localhost:5001/employee/add">
+			<div>
+			  <label for="name">Имя</label>
+			  <input id="firstName" type="text" name="firstName" required>
+			</div>
+			<div>
+			  <label for="name">Фамилия</label>
+			  <input id="secondName" type="text" name="secondName" required>
+			</div>
+			<div>
+			  <label for="name">Возраст</label>
+			  <input id="age" type="number" name="age" required>
+			</div>
+			<div class="radio">
+			  <span>Пол</span>
+			  <select id="gender" name="Gender">
+				<option>Выберите пол</option>
+				<option value="Male">Мужской</option> 
+				<option value="Female">Женский</option> 
+			  </select> 
+			  <div class="select-arrow"></div>
+			</div>
+			<div id="codeCh">
+			
+					<label for="name">Отдел</label>
+				  <select id="Deps">
+					 
+				  </select> 
+				  <div class="select-arrow"></div>
+				  
+				  <div>
+				  <label for="country">Язык</label>
+				  <select id="Langs">
+					 
+				  </select> 
+				  <div class="select-arrow"></div> 
+				</div> 
+				<button type="submit">Отправить</button> 
+			  </form>
+			  
+			</div>
+		
+		<script>
+		var myArray = []
+		
+
+		$.ajax({
+			method:'GET',
+			url:'https://localhost:5001/dep',
+			success:function(response){
+				myArray = response.responseData
+				buildTable(myArray)
+				console.log(myArray)
+			}
+		})
+
+
+
+		function buildTable(responseData){
+			var select = document.getElementById('Deps')
+			
+			var row = `<option>Выберите отдел</option>`
+			
+			select.innerHTML += row
+
+			for (var i = 0; i < responseData.length; i++)
+			{
+				var row = `<option value="Dep">${responseData[i].depName}</option>`
+				select.innerHTML += row
+
+
+			}
+			
+		}
+			
+		
+		$.ajax({
+			method:'GET',
+			url:'https://localhost:5001/lang',
+			success:function(response){
+				myArray = response.responseData
+				buildTable2(myArray)
+				console.log(myArray)
+			}
+		})
+
+
+
+		function buildTable2(responseData){
+			var select = document.getElementById('Langs')
+			
+			var row = `<option>Выберите язык программирования</option>`
+			
+			select.innerHTML += row
+
+			for (var i = 0; i < responseData.length; i++)
+			{
+				var row = `<option value="Lang">${responseData[i].langName}</option>`
+				select.innerHTML += row
+
+
+			}
+		};
+		
+
+		</script>
+		
+ 
+</body>
+</html>

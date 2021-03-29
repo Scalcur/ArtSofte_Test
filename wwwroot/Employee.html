@@ -7,58 +7,73 @@
 </head>
 <body>
 		
-		<table class="table">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+
+		<table class="table table-striped">
 		
-		<tr><th colspan="6">Список сотрудников</th></tr>
+			<tr><th colspan="6">Список сотрудников</th></tr>
+			<tr><th colspan="1"><left><form method="GET" action="Add.html"><input type="submit" value="Добавить"/></form></left></th></tr>
 		
-		<tr>
-		<th>Имя</th>
-		<th>Фамилия</th>
-		<th>Пол</th>
-		<th>Возраст</th>
-		<th>Отдел</th>
-		<th>Язык программирования</th>
-		<th></th>
-		</tr>
-		
-		<tr>
-		<td>Test</td>
-		<td>Test</td>
-		<td>М</td>
-		<td>18</td>
-		<td>Отдел 1</td>
-		<th>С++</th>
-		<th>
-			<form method="PUT" action="https://localhost:5001/employee/edit">
-				<input type="submit" value="Изменить"/>
-			</form>
-			<form method="DELETE" action="https://localhost:5001/employee/delete">
-				<input type="submit" value="Удалить"/>
-			</form>
-		</th>
-		</tr>
-		
-		
-		<tr>
-		<td>Test2</td>
-		<td>Test2</td>
-		<td>Ж</td>
-		<td>22</td>
-		<td>Отдел 2</td>
-		<th>С#</th>
-		<th>
-			<form method="POST" action="">
-				<input type="hidden" name="product_id" value=""/>
-				<input type="submit" value="Изменить"/>
-			</form>
-			<form method="POST" action="">
-				<input type="hidden" name="product_id" value=""/>
-				<input type="submit" value="Удалить"/>
-			</form>
-		</th>
-		</tr>
-		
+			<tr>
+			<th>Имя</th>
+			<th>Фамилия</th>
+			<th>Пол</th>
+			<th>Возраст</th>
+			<th>Отдел</th>
+			<th>Язык программирования</th>
+			<th></th>
+			</tr>
+
+			<tbody id="myTable">
+				
+			</tbody>
 		</table>
+
+		<script>
+		var myArray = []
+		
+
+		$.ajax({
+			method:'GET',
+			url:'https://localhost:5001/employee',
+			success:function(response){
+				myArray = response.responseData
+				buildTable(myArray)
+				console.log(myArray)
+			}
+		})
+
+
+
+		function buildTable(responseData){
+			var table = document.getElementById('myTable')
+
+			for (var i = 0; i < responseData.length; i++){
+				var row = `<tr>
+								<th>${responseData[i].firstName}</th>
+								<th>${responseData[i].secondName}</th>
+								<th>${responseData[i].gender}</th>
+								<th>${responseData[i].age}</th>
+								<th>${responseData[i].department.depName}</th>
+								<th>${responseData[i].employeeLanguages[0].lang.langName}</th>
+								<th>
+									<form method="PUT" action="https://localhost:5001/employee/edit">
+										<input type="submit" value="Изменить"/>
+									</form>
+									<form method="DELETE" action="https://localhost:5001/employee/delete/` + `${responseData[i].employeeId}` + `">
+										<input type="submit" value="Удалить"/>
+									</form>
+								</th>
+						  </tr>`
+				table.innerHTML += row
+
+
+			}
+		}
+
+	</script>
+		
 		
 </body>
 </html>

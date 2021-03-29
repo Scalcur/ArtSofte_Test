@@ -35,6 +35,12 @@ namespace ArtSofte_Test
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            app.UseCors(builder =>
+                builder.AllowAnyOrigin()
+                .AllowAnyHeader()
+                .AllowAnyMethod()
+            );
+            
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

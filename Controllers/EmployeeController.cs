@@ -83,7 +83,7 @@ namespace ArtSofte_Test.Controllers
             
         }
 
-        [HttpDelete("delete/{id}")]
+        [HttpGet("delete/{id}")]
         async public Task Delete(string id)
         {
             try
