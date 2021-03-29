@@ -77,7 +77,8 @@ namespace ArtSofte_Test.DataBase
                         SecondName = "Test1",
                         Age = 18,
                         Gender = "Male",
-                        DepRefId = Dep1.Id,
+                        Department = Dep1,
+                        DepRefId = Dep1.Id
                         //EmployeeId = Guid.NewGuid()
 
                     };
@@ -88,7 +89,8 @@ namespace ArtSofte_Test.DataBase
                         SecondName = "Test2",
                         Age = 20,
                         Gender = "Female",
-                        DepRefId = Dep2.Id,
+                        Department = Dep2,
+                        DepRefId = Dep2.Id
                         //EmployeeId = Guid.NewGuid()
                     };
 
@@ -98,7 +100,8 @@ namespace ArtSofte_Test.DataBase
                         SecondName = "Test3",
                         Age = 40,
                         Gender = "Male",
-                        DepRefId = Dep3.Id,
+                        Department = Dep3,
+                        DepRefId = Dep3.Id
                         //EmployeeId = Guid.NewGuid()
                     };
                 

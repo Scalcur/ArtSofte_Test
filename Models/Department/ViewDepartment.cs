@@ -11,6 +11,8 @@ namespace ArtSofte_Test.Models.Department
         //public Guid DepId { get; set; }
         public int Id { get; set; }
 
+        public List<ViewEmployee> Employees { get; set; }
+
         //public int Id { get; set; }
     }
 }

@@ -1,6 +1,7 @@
 using System;
 using System.Text.Json.Serialization;
 using System.Collections.Generic;
+using ArtSofte_Test.Models.Department;
 
 namespace ArtSofte_Test.Models.Employee
 {
@@ -11,6 +12,8 @@ namespace ArtSofte_Test.Models.Employee
 
         [JsonPropertyName("depRefId")]
         public int DepRefId { get; set; }
+
+        public ViewDepartment Department { get; set; }
 
         public List<EmployeeLanguage> EmployeeLanguages { get; set; }
 

@@ -8,6 +8,7 @@ namespace ArtSofte_Test.Models.Employee
     {
         [JsonPropertyName("depRefId")]
         public int DepRefId { get; set; }
+        
 
     }
 }
