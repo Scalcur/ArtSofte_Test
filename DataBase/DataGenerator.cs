@@ -106,10 +106,9 @@ namespace ArtSofte_Test.DataBase
 
                 context.SaveChanges();
 
+
                 Employee1.EmployeeLanguages.Add(new EmployeeLanguage { LangId = Lang1.LangId, EmployeeId = Employee1.EmployeeId });
-                context.SaveChanges();
                 Employee2.EmployeeLanguages.Add(new EmployeeLanguage { LangId = Lang2.LangId, EmployeeId = Employee2.EmployeeId });
-                context.SaveChanges();
                 Employee3.EmployeeLanguages.Add(new EmployeeLanguage { LangId = Lang3.LangId, EmployeeId = Employee3.EmployeeId });
                 context.SaveChanges();
 
