@@ -30,7 +30,7 @@ namespace ArtSofte_Test.Manager
         
         public async Task<ViewEmployee> GetEmployeeById(string id)
         {
-            var employee = EmployeeManager.Employees.FirstOrDefault(elem => elem.EmployeeId.ToString() == id);
+            var employee = _context.Employees.Find(Convert.ToInt32(id));
 
             if(employee == null)
             {
@@ -52,7 +52,9 @@ namespace ArtSofte_Test.Manager
                     Gender = createEmployee.Gender
                 };
 
-            EmployeeManager.Employees.Add(newEmployee);
+            _context.Employees.Add(newEmployee);
+            _context.SaveChanges();
+            
 
             return newEmployee.EmployeeId.ToString();
         }
@@ -61,21 +63,26 @@ namespace ArtSofte_Test.Manager
         {
             _logger.LogInformation("Edit user");
 
-                var editEmployee = EmployeeManager.Employees.FirstOrDefault(elem => elem.EmployeeId == viewEmployee.EmployeeId);
+                var editEmployee = _context.Employees.Find(Convert.ToInt32(viewEmployee.Id));
                 if (editEmployee == null) 
                 {
                   throw new Exception("Employee not found");  
                 }
 
-                EmployeeManager.Employees.Remove(editEmployee);
+                _context.Employees.Remove(editEmployee);
+                _context.SaveChanges();
                 
                 editEmployee.FirstName = viewEmployee.FirstName;
                 editEmployee.SecondName = viewEmployee.SecondName;
                 editEmployee.Age = viewEmployee.Age;
                 editEmployee.Gender = viewEmployee.Gender;
                 editEmployee.DepRefId = viewEmployee.DepRefId;
+                editEmployee.EmployeeLanguages = viewEmployee.EmployeeLanguages;
+                editEmployee.EmployeeId = viewEmployee.EmployeeId;
+                editEmployee.Id = viewEmployee.Id;
 
-                EmployeeManager.Employees.Add(editEmployee);
+                _context.Employees.Add(editEmployee);
+                _context.SaveChanges();
 
             return editEmployee.EmployeeId.ToString();
         }
@@ -84,13 +91,14 @@ namespace ArtSofte_Test.Manager
         {
             _logger.LogInformation("Delete user");
             
-             var editEmployee = EmployeeManager.Employees.FirstOrDefault(elem => elem.EmployeeId.ToString() == id);
+             var editEmployee = _context.Employees.Find(Convert.ToInt32(id));
             if (editEmployee == null) 
             {
                 throw new Exception("Employee not found");  
             }
 
-            EmployeeManager.Employees.Remove(editEmployee);
+            _context.Employees.Remove(editEmployee);
+            _context.SaveChanges();
 
             return editEmployee.EmployeeId.ToString();
         }

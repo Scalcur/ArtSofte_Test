@@ -30,7 +30,7 @@ namespace ArtSofte_Test.Manager
         
         public async Task<ViewLang> GetLangById(string id)
         {
-            var lang = LangManager.Langs.FirstOrDefault(elem => elem.LangId.ToString() == id);
+            var lang = _context.Langs.Find(Convert.ToInt32(id));
 
             if(lang == null)
             {
@@ -48,7 +48,8 @@ namespace ArtSofte_Test.Manager
                     LangName = createLang.LangName
                 };
 
-            LangManager.Langs.Add(newLang);
+            _context.Langs.Add(newLang);
+            _context.SaveChanges();
 
             return newLang.LangId.ToString();
         }
@@ -57,18 +58,20 @@ namespace ArtSofte_Test.Manager
         {
             _logger.LogInformation("Edit language");
 
-                var editLang = LangManager.Langs.FirstOrDefault(elem => elem.LangId == viewLang.LangId);
+                var editLang = _context.Langs.Find(Convert.ToInt32(viewLang.Id));
                 if (editLang == null) 
                 {
                   throw new Exception("Language not found");  
                 }
 
-                LangManager.Langs.Remove(editLang);
+                _context.Langs.Remove(editLang);
+                _context.SaveChanges();
                 
                 editLang.LangId = viewLang.LangId;
                 editLang.LangName = viewLang.LangName;
                 
-                LangManager.Langs.Add(editLang);
+                _context.Langs.Add(editLang);
+                _context.SaveChanges();
 
             return editLang.LangId.ToString();
         }
@@ -77,13 +80,14 @@ namespace ArtSofte_Test.Manager
         {
             _logger.LogInformation("Delete language");
             
-             var editLang = LangManager.Langs.FirstOrDefault(elem => elem.LangId.ToString() == id);
+             var editLang = _context.Langs.Find(Convert.ToInt32(id));
             if (editLang == null) 
             {
                 throw new Exception("Language not found");  
             }
 
-            LangManager.Langs.Remove(editLang);
+            _context.Langs.Remove(editLang);
+            _context.SaveChanges();
 
             return editLang.LangId.ToString();
         }

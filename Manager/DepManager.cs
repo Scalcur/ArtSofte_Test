@@ -29,7 +29,7 @@ namespace ArtSofte_Test.Manager
         
         public async Task<ViewDepartment> GetDepById(string id)
         {
-            var dep = DepManager.Deps.FirstOrDefault(elem => elem.DepId.ToString() == id);
+            var dep = _context.Departments.Find(Convert.ToInt32(id));
 
             if(dep == null)
             {
@@ -48,7 +48,8 @@ namespace ArtSofte_Test.Manager
                     DepFloor = createDepartment.DepFloor
                 };
 
-            DepManager.Deps.Add(newDep);
+            _context.Departments.Add(newDep);
+            _context.SaveChanges();
 
             return newDep.DepId.ToString();
         }
@@ -57,19 +58,21 @@ namespace ArtSofte_Test.Manager
         {
             _logger.LogInformation("Edit department");
 
-                var editDep = DepManager.Deps.FirstOrDefault(elem => elem.DepId == viewDepartment.DepId);
+                var editDep = _context.Departments.Find(Convert.ToInt32(viewDepartment.Id));
                 if (editDep == null) 
                 {
                   throw new Exception("Department not found");  
                 }
 
-                DepManager.Deps.Remove(editDep);
+                _context.Departments.Remove(editDep);
+                _context.SaveChanges();
                 
                 editDep.DepId = viewDepartment.DepId;
                 editDep.DepName = viewDepartment.DepName;
                 editDep.DepFloor = viewDepartment.DepFloor;
                 
-                DepManager.Deps.Add(editDep);
+                _context.Departments.Add(editDep);
+                _context.SaveChanges();
 
             return editDep.DepId.ToString();
         }
@@ -78,13 +81,14 @@ namespace ArtSofte_Test.Manager
         {
             _logger.LogInformation("Delete department");
             
-             var editDep = DepManager.Deps.FirstOrDefault(elem => elem.DepId.ToString() == id);
+             var editDep = _context.Departments.Find(Convert.ToInt32(id));
             if (editDep == null) 
             {
                 throw new Exception("Department not found");  
             }
 
-            DepManager.Deps.Remove(editDep);
+            _context.Departments.Remove(editDep);
+            _context.SaveChanges();
 
             return editDep.DepId.ToString();
         }
