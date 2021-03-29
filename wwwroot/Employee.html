@@ -58,10 +58,10 @@
 								<th>${responseData[i].department.depName}</th>
 								<th>${responseData[i].employeeLanguages[0].lang.langName}</th>
 								<th>
-									<form method="PUT" action="https://localhost:5001/employee/edit">
+									<form method="PUT" action="Edit.html">
 										<input type="submit" value="Изменить"/>
 									</form>
-									<form method="DELETE" action="https://localhost:5001/employee/delete/` + `${responseData[i].employeeId}` + `">
+									<form method="get" action="https://localhost:5001/employee/delete/` + `${responseData[i].employeeId}` + `">
 										<input type="submit" value="Удалить"/>
 									</form>
 								</th>
