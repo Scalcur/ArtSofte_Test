@@ -87,7 +87,7 @@ namespace ArtSofte_Test.Manager
                 _context.Employees.Remove(editEmployee);
                 _context.SaveChanges();
                 
-                editEmployee.FirstName = viewEmployee.FirstName;
+                /*editEmployee.FirstName = viewEmployee.FirstName;
                 editEmployee.SecondName = viewEmployee.SecondName;
                 editEmployee.Age = viewEmployee.Age;
                 editEmployee.Gender = viewEmployee.Gender;
@@ -96,6 +96,24 @@ namespace ArtSofte_Test.Manager
                 editEmployee.Id = viewEmployee.Id;
 
                 _context.Employees.Add(editEmployee);
+                _context.SaveChanges();*/
+
+                var department = _context.Departments.FirstOrDefault(el => el.Id == viewEmployee.DepRefId);
+
+                var newEmployee = new ViewEmployee()
+                {
+                    FirstName = viewEmployee.FirstName,
+                    SecondName = viewEmployee.SecondName,
+                    DepRefId = viewEmployee.DepRefId,
+                    Age = viewEmployee.Age,
+                    Gender = viewEmployee.Gender,
+                    Department = department,
+                    EmployeeLanguages = viewEmployee.EmployeeLanguages,
+                    Id = viewEmployee.Id
+
+                };
+
+                _context.Employees.Add(newEmployee);
                 _context.SaveChanges();
 
             return editEmployee.Id.ToString();

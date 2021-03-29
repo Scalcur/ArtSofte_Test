@@ -71,7 +71,7 @@ namespace ArtSofte_Test.Controllers
             
         }
 
-        [HttpPut("edit")]
+        [HttpPost("edit")]
         async public Task<RedirectResult> Edit([FromForm] ViewEmployee viewEmployee)
         {
             try
